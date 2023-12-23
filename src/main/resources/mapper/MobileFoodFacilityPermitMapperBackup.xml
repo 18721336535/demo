@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbq.demo.mapper.MobileFoodFacilityPermitMapper">
+  <resultMap id="BaseResultMap" type="com.zbq.demo.domain.MobileFoodFacilityPermit">
+    <result column="locationid" jdbcType="VARCHAR" property="locationid" />
+    <result column="Applicant" jdbcType="VARCHAR" property="applicant" />
+    <result column="FacilityType" jdbcType="VARCHAR" property="facilitytype" />
+    <result column="cnn" jdbcType="VARCHAR" property="cnn" />
+    <result column="LocationDescription" jdbcType="VARCHAR" property="locationdescription" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="blocklot" jdbcType="VARCHAR" property="blocklot" />
+    <result column="block" jdbcType="VARCHAR" property="block" />
+    <result column="lot" jdbcType="VARCHAR" property="lot" />
+    <result column="permit" jdbcType="VARCHAR" property="permit" />
+    <result column="Status" jdbcType="VARCHAR" property="status" />
+    <result column="FoodItems" jdbcType="VARCHAR" property="fooditems" />
+    <result column="X" jdbcType="VARCHAR" property="x" />
+    <result column="Y" jdbcType="VARCHAR" property="y" />
+    <result column="Latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="Longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="Schedule" jdbcType="VARCHAR" property="schedule" />
+    <result column="dayshours" jdbcType="VARCHAR" property="dayshours" />
+    <result column="NOISent" jdbcType="VARCHAR" property="noisent" />
+    <result column="Approved" jdbcType="VARCHAR" property="approved" />
+    <result column="Received" jdbcType="VARCHAR" property="received" />
+    <result column="PriorPermit" jdbcType="VARCHAR" property="priorpermit" />
+    <result column="ExpirationDate" jdbcType="VARCHAR" property="expirationdate" />
+    <result column="Location" jdbcType="VARCHAR" property="location" />
+    <result column="FirePreventionDistricts" jdbcType="VARCHAR" property="firePreventionDistricts" />
+    <result column="PoliceDistricts" jdbcType="VARCHAR" property="policeDistricts" />
+    <result column="SupervisorDistricts" jdbcType="VARCHAR" property="supervisorDistricts" />
+    <result column="ZipCodes" jdbcType="VARCHAR" property="zipCodes" />
+    <result column="Neighborhoods" jdbcType="VARCHAR" property="neighborhoods" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    locationid, Applicant, FacilityType, cnn, LocationDescription, Address, blocklot, 
+    block, lot, permit, Status, FoodItems, X, Y, Latitude, Longitude, Schedule, dayshours, 
+    NOISent, Approved, Received, PriorPermit, ExpirationDate, Location, FirePreventionDistricts, 
+    PoliceDistricts, SupervisorDistricts, ZipCodes, Neighborhoods
+  </sql>
+
+
+  <select id="selectByExample" parameterType="com.zbq.demo.domain.MobileFoodFacilityPermitExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from mobile_food_facility_permit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
+
+  <delete id="deleteByExample" parameterType="com.zbq.demo.domain.MobileFoodFacilityPermitExample">
+    delete from mobile_food_facility_permit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zbq.demo.domain.MobileFoodFacilityPermit">
+    insert into mobile_food_facility_permit (locationid, Applicant, FacilityType, 
+      cnn, LocationDescription, Address, 
+      blocklot, block, lot, 
+      permit, Status, FoodItems, 
+      X, Y, Latitude, Longitude, 
+      Schedule, dayshours, NOISent, 
+      Approved, Received, PriorPermit, 
+      ExpirationDate, Location, FirePreventionDistricts, 
+      PoliceDistricts, SupervisorDistricts, ZipCodes, 
+      Neighborhoods)
+    values (#{locationid,jdbcType=VARCHAR}, #{applicant,jdbcType=VARCHAR}, #{facilitytype,jdbcType=VARCHAR}, 
+      #{cnn,jdbcType=VARCHAR}, #{locationdescription,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{blocklot,jdbcType=VARCHAR}, #{block,jdbcType=VARCHAR}, #{lot,jdbcType=VARCHAR}, 
+      #{permit,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{fooditems,jdbcType=VARCHAR}, 
+      #{x,jdbcType=VARCHAR}, #{y,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{schedule,jdbcType=VARCHAR}, #{dayshours,jdbcType=VARCHAR}, #{noisent,jdbcType=VARCHAR}, 
+      #{approved,jdbcType=VARCHAR}, #{received,jdbcType=VARCHAR}, #{priorpermit,jdbcType=VARCHAR}, 
+      #{expirationdate,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{firePreventionDistricts,jdbcType=VARCHAR}, 
+      #{policeDistricts,jdbcType=VARCHAR}, #{supervisorDistricts,jdbcType=VARCHAR}, #{zipCodes,jdbcType=VARCHAR}, 
+      #{neighborhoods,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zbq.demo.domain.MobileFoodFacilityPermit">
+    insert into mobile_food_facility_permit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="locationid != null">
+        locationid,
+      </if>
+      <if test="applicant != null">
+        Applicant,
+      </if>
+      <if test="facilitytype != null">
+        FacilityType,
+      </if>
+      <if test="cnn != null">
+        cnn,
+      </if>
+      <if test="locationdescription != null">
+        LocationDescription,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+      <if test="blocklot != null">
+        blocklot,
+      </if>
+      <if test="block != null">
+        block,
+      </if>
+      <if test="lot != null">
+        lot,
+      </if>
+      <if test="permit != null">
+        permit,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="fooditems != null">
+        FoodItems,
+      </if>
+      <if test="x != null">
+        X,
+      </if>
+      <if test="y != null">
+        Y,
+      </if>
+      <if test="latitude != null">
+        Latitude,
+      </if>
+      <if test="longitude != null">
+        Longitude,
+      </if>
+      <if test="schedule != null">
+        Schedule,
+      </if>
+      <if test="dayshours != null">
+        dayshours,
+      </if>
+      <if test="noisent != null">
+        NOISent,
+      </if>
+      <if test="approved != null">
+        Approved,
+      </if>
+      <if test="received != null">
+        Received,
+      </if>
+      <if test="priorpermit != null">
+        PriorPermit,
+      </if>
+      <if test="expirationdate != null">
+        ExpirationDate,
+      </if>
+      <if test="location != null">
+        Location,
+      </if>
+      <if test="firePreventionDistricts != null">
+        FirePreventionDistricts,
+      </if>
+      <if test="policeDistricts != null">
+        PoliceDistricts,
+      </if>
+      <if test="supervisorDistricts != null">
+        SupervisorDistricts,
+      </if>
+      <if test="zipCodes != null">
+        ZipCodes,
+      </if>
+      <if test="neighborhoods != null">
+        Neighborhoods,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="locationid != null">
+        #{locationid,jdbcType=VARCHAR},
+      </if>
+      <if test="applicant != null">
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="facilitytype != null">
+        #{facilitytype,jdbcType=VARCHAR},
+      </if>
+      <if test="cnn != null">
+        #{cnn,jdbcType=VARCHAR},
+      </if>
+      <if test="locationdescription != null">
+        #{locationdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="blocklot != null">
+        #{blocklot,jdbcType=VARCHAR},
+      </if>
+      <if test="block != null">
+        #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="lot != null">
+        #{lot,jdbcType=VARCHAR},
+      </if>
+      <if test="permit != null">
+        #{permit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="fooditems != null">
+        #{fooditems,jdbcType=VARCHAR},
+      </if>
+      <if test="x != null">
+        #{x,jdbcType=VARCHAR},
+      </if>
+      <if test="y != null">
+        #{y,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="schedule != null">
+        #{schedule,jdbcType=VARCHAR},
+      </if>
+      <if test="dayshours != null">
+        #{dayshours,jdbcType=VARCHAR},
+      </if>
+      <if test="noisent != null">
+        #{noisent,jdbcType=VARCHAR},
+      </if>
+      <if test="approved != null">
+        #{approved,jdbcType=VARCHAR},
+      </if>
+      <if test="received != null">
+        #{received,jdbcType=VARCHAR},
+      </if>
+      <if test="priorpermit != null">
+        #{priorpermit,jdbcType=VARCHAR},
+      </if>
+      <if test="expirationdate != null">
+        #{expirationdate,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="firePreventionDistricts != null">
+        #{firePreventionDistricts,jdbcType=VARCHAR},
+      </if>
+      <if test="policeDistricts != null">
+        #{policeDistricts,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorDistricts != null">
+        #{supervisorDistricts,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCodes != null">
+        #{zipCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="neighborhoods != null">
+        #{neighborhoods,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zbq.demo.domain.MobileFoodFacilityPermitExample" resultType="java.lang.Long">
+    select count(*) from mobile_food_facility_permit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mobile_food_facility_permit
+    <set>
+      <if test="row.locationid != null">
+        locationid = #{row.locationid,jdbcType=VARCHAR},
+      </if>
+      <if test="row.applicant != null">
+        Applicant = #{row.applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="row.facilitytype != null">
+        FacilityType = #{row.facilitytype,jdbcType=VARCHAR},
+      </if>
+      <if test="row.cnn != null">
+        cnn = #{row.cnn,jdbcType=VARCHAR},
+      </if>
+      <if test="row.locationdescription != null">
+        LocationDescription = #{row.locationdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="row.address != null">
+        Address = #{row.address,jdbcType=VARCHAR},
+      </if>
+      <if test="row.blocklot != null">
+        blocklot = #{row.blocklot,jdbcType=VARCHAR},
+      </if>
+      <if test="row.block != null">
+        block = #{row.block,jdbcType=VARCHAR},
+      </if>
+      <if test="row.lot != null">
+        lot = #{row.lot,jdbcType=VARCHAR},
+      </if>
+      <if test="row.permit != null">
+        permit = #{row.permit,jdbcType=VARCHAR},
+      </if>
+      <if test="row.status != null">
+        Status = #{row.status,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fooditems != null">
+        FoodItems = #{row.fooditems,jdbcType=VARCHAR},
+      </if>
+      <if test="row.x != null">
+        X = #{row.x,jdbcType=VARCHAR},
+      </if>
+      <if test="row.y != null">
+        Y = #{row.y,jdbcType=VARCHAR},
+      </if>
+      <if test="row.latitude != null">
+        Latitude = #{row.latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.longitude != null">
+        Longitude = #{row.longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="row.schedule != null">
+        Schedule = #{row.schedule,jdbcType=VARCHAR},
+      </if>
+      <if test="row.dayshours != null">
+        dayshours = #{row.dayshours,jdbcType=VARCHAR},
+      </if>
+      <if test="row.noisent != null">
+        NOISent = #{row.noisent,jdbcType=VARCHAR},
+      </if>
+      <if test="row.approved != null">
+        Approved = #{row.approved,jdbcType=VARCHAR},
+      </if>
+      <if test="row.received != null">
+        Received = #{row.received,jdbcType=VARCHAR},
+      </if>
+      <if test="row.priorpermit != null">
+        PriorPermit = #{row.priorpermit,jdbcType=VARCHAR},
+      </if>
+      <if test="row.expirationdate != null">
+        ExpirationDate = #{row.expirationdate,jdbcType=VARCHAR},
+      </if>
+      <if test="row.location != null">
+        Location = #{row.location,jdbcType=VARCHAR},
+      </if>
+      <if test="row.firePreventionDistricts != null">
+        FirePreventionDistricts = #{row.firePreventionDistricts,jdbcType=VARCHAR},
+      </if>
+      <if test="row.policeDistricts != null">
+        PoliceDistricts = #{row.policeDistricts,jdbcType=VARCHAR},
+      </if>
+      <if test="row.supervisorDistricts != null">
+        SupervisorDistricts = #{row.supervisorDistricts,jdbcType=VARCHAR},
+      </if>
+      <if test="row.zipCodes != null">
+        ZipCodes = #{row.zipCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="row.neighborhoods != null">
+        Neighborhoods = #{row.neighborhoods,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mobile_food_facility_permit
+    set locationid = #{row.locationid,jdbcType=VARCHAR},
+      Applicant = #{row.applicant,jdbcType=VARCHAR},
+      FacilityType = #{row.facilitytype,jdbcType=VARCHAR},
+      cnn = #{row.cnn,jdbcType=VARCHAR},
+      LocationDescription = #{row.locationdescription,jdbcType=VARCHAR},
+      Address = #{row.address,jdbcType=VARCHAR},
+      blocklot = #{row.blocklot,jdbcType=VARCHAR},
+      block = #{row.block,jdbcType=VARCHAR},
+      lot = #{row.lot,jdbcType=VARCHAR},
+      permit = #{row.permit,jdbcType=VARCHAR},
+      Status = #{row.status,jdbcType=VARCHAR},
+      FoodItems = #{row.fooditems,jdbcType=VARCHAR},
+      X = #{row.x,jdbcType=VARCHAR},
+      Y = #{row.y,jdbcType=VARCHAR},
+      Latitude = #{row.latitude,jdbcType=VARCHAR},
+      Longitude = #{row.longitude,jdbcType=VARCHAR},
+      Schedule = #{row.schedule,jdbcType=VARCHAR},
+      dayshours = #{row.dayshours,jdbcType=VARCHAR},
+      NOISent = #{row.noisent,jdbcType=VARCHAR},
+      Approved = #{row.approved,jdbcType=VARCHAR},
+      Received = #{row.received,jdbcType=VARCHAR},
+      PriorPermit = #{row.priorpermit,jdbcType=VARCHAR},
+      ExpirationDate = #{row.expirationdate,jdbcType=VARCHAR},
+      Location = #{row.location,jdbcType=VARCHAR},
+      FirePreventionDistricts = #{row.firePreventionDistricts,jdbcType=VARCHAR},
+      PoliceDistricts = #{row.policeDistricts,jdbcType=VARCHAR},
+      SupervisorDistricts = #{row.supervisorDistricts,jdbcType=VARCHAR},
+      ZipCodes = #{row.zipCodes,jdbcType=VARCHAR},
+      Neighborhoods = #{row.neighborhoods,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

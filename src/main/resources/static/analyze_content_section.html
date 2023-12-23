@@ -1,0 +1,138 @@
+    <!-- 内容头部 -->
+    <section class="content-header">
+        <h1>
+            Data Management
+            <small>Data List</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> First Page</a></li>
+            <li><a href="#">Data Management</a></li>
+            <li class="active">Data List</li>
+        </ol>
+    </section>
+    <!-- 内容头部 /-->
+
+    <!-- 正文区域 -->
+
+    <section class="content" id="content-section">
+
+        <!-- .box-body -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">&nbsp;input:</h3>
+            </div>
+            <div class="box-header with-border">
+                <div class="form-group form-inline">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <div class="form-group form-inline">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="btn btn-default input-sm">FoodName</label>
+                        <input type="text" class="form-control input-sm data-manage-input-sm" id="search-food-id" style="width:300px" placeholder="food name">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="btn btn-default input-sm">Location KeyWord</label>
+                        <input type="text" class="form-control input-sm data-manage-input-sm" id="location-key-word-id" style="width:200px" placeholder="location">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-default input-sm" title="preview" @click="findDataByFiledNameAndValue()"><i class="fa fa-check"></i>search</button>
+                    </div>
+                </div>
+            </div>
+            <!--                <div class="pull-left">-->
+            <div class="">
+                <div class="box-header with-border">
+                    <h3 class="box-title">&nbsp;output:</h3>
+                </div>
+            </div>
+            <div class="box-body">
+
+                <!-- 数据表格 -->
+                <div class="table-box">
+
+                    <!--工具栏-->
+                    <div class="pull-left">
+                        <div class="form-group form-inline">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default" title="refresh"><i class="fa fa-refresh"></i> refresh</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-tools pull-right">
+                        <div class="has-feedback">
+                            <input type="text" class="form-control input-sm" placeholder="search">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!--工具栏/-->
+
+                    <!--Data List-->
+                    <table id="dataList" class="table table-bordered table-striped table-hover dataTable mytablecss">
+                        <thead>
+                        <tr>
+                            <th class="" style="padding-right:0px;">
+                                <input id="selall" type="checkbox" class="icheckbox_square-blue">
+                            </th>
+                            <th class="text-center sorting_asc">Location Id</th>
+                            <th class="text-center">Location</th>
+                            <th class="text-center sorting_desc">LocationDescription</th>
+                            <th class="text-center sorting_asc_disabled">Address</th>
+                            <th class="text-center sorting">FoodItems</th>
+                            <th class="text-center">DaysHours</th>
+                            <th class="text-center">Status</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr v-for="file in fileList.slice(0, 9)">
+                            <td><input name="ids" type="checkbox"></td>
+                            <td>{{file.locationid}}</td>
+                            <td>{{file.location}}</td>
+                            <td>{{file.locationdescription}}</td>
+                            <td>{{file.address}}</td>
+                            <td>{{file.fooditems}}</td>
+                            <td>{{file.dayshours}}</td>
+                            <td>{{file.status}}</td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                    <!--Data List/-->
+                </div>
+                <!-- 数据表格 /-->
+            </div>
+            <!-- /.box-body -->
+            <!-- .box-footer-->
+            <div class="box-footer">
+                <div class="pull-left">
+                    <div class="form-group form-inline">
+                        总共2 页，共14 条数据。 每页
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select> 条
+                    </div>
+                </div>
+
+                <div class="box-tools pull-right">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">First Page</a>
+                        </li>
+                        <li><a href="#">上一页</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">下一页</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">尾页</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- /.box-footer-->
+        </div>
+    </section>

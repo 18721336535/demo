@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbq.demo.mapper.MobileFoodFacilityPermitMapper">
+  <resultMap id="BaseResultMap" type="com.zbq.demo.domain.MobileFoodFacilityPermit">
+    <result column="locationid" jdbcType="VARCHAR" property="locationid" />
+    <result column="Applicant" jdbcType="VARCHAR" property="applicant" />
+    <result column="FacilityType" jdbcType="VARCHAR" property="facilitytype" />
+    <result column="cnn" jdbcType="VARCHAR" property="cnn" />
+    <result column="LocationDescription" jdbcType="VARCHAR" property="locationdescription" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="blocklot" jdbcType="VARCHAR" property="blocklot" />
+    <result column="block" jdbcType="VARCHAR" property="block" />
+    <result column="lot" jdbcType="VARCHAR" property="lot" />
+    <result column="permit" jdbcType="VARCHAR" property="permit" />
+    <result column="Status" jdbcType="VARCHAR" property="status" />
+    <result column="FoodItems" jdbcType="VARCHAR" property="fooditems" />
+    <result column="X" jdbcType="VARCHAR" property="x" />
+    <result column="Y" jdbcType="VARCHAR" property="y" />
+    <result column="Latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="Longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="Schedule" jdbcType="VARCHAR" property="schedule" />
+    <result column="dayshours" jdbcType="VARCHAR" property="dayshours" />
+    <result column="NOISent" jdbcType="VARCHAR" property="noisent" />
+    <result column="Approved" jdbcType="VARCHAR" property="approved" />
+    <result column="Received" jdbcType="VARCHAR" property="received" />
+    <result column="PriorPermit" jdbcType="VARCHAR" property="priorpermit" />
+    <result column="ExpirationDate" jdbcType="VARCHAR" property="expirationdate" />
+    <result column="Location" jdbcType="VARCHAR" property="location" />
+    <result column="FirePreventionDistricts" jdbcType="VARCHAR" property="firePreventionDistricts" />
+    <result column="PoliceDistricts" jdbcType="VARCHAR" property="policeDistricts" />
+    <result column="SupervisorDistricts" jdbcType="VARCHAR" property="supervisorDistricts" />
+    <result column="ZipCodes" jdbcType="VARCHAR" property="zipCodes" />
+    <result column="Neighborhoods" jdbcType="VARCHAR" property="neighborhoods" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Base_Column_List">
+    locationid, Applicant, FacilityType, cnn, LocationDescription, Address, blocklot, 
+    block, lot, permit, Status, FoodItems, X, Y, Latitude, Longitude, Schedule, dayshours, 
+    NOISent, Approved, Received, PriorPermit, ExpirationDate, Location, FirePreventionDistricts, 
+    PoliceDistricts, SupervisorDistricts, ZipCodes, Neighborhoods
+  </sql>
+
+  <select id="selectByExample" parameterType="com.zbq.demo.domain.MobileFoodFacilityPermitExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from mobile_food_facility_permit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <select id="countByExample" parameterType="com.zbq.demo.domain.MobileFoodFacilityPermitExample" resultType="java.lang.Long">
+    select count(*) from mobile_food_facility_permit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+</mapper>

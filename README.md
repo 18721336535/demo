@@ -27,13 +27,13 @@ BuildTool: Maven3.5.1
 Data store: Mysql5.7 (Navicat Premium11 as client) or H2
 Deployment: docker container
 Frontend tech: html, css, js(jquery + vue2.0)
-![image](https://github.com/18721336535/demo/tempimage/springbootinit.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/springbootinit.png)
 
 ### Step2. Building Project / Business Coding/ Unit Testing
 #### Backend
 ##### Data Pre-handling by trying to import to mysql
-![image](https://github.com/18721336535/demo/tempimage/mysqlcontainer.png)
-![image](https://github.com/18721336535/demo/tempimage/dataimportmysql.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/mysqlcontainer.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/dataimportmysql.png)
 After above, export as sql script( schema.sql and  data.sql),ready to load to H2 db
 ##### API Function Describe
 1. List all items in csv of Food Facility Permit
@@ -59,8 +59,8 @@ spring.h2.console.path=/h2
 spring.h2.console.enabled=true
 ```
 (http://127.0.0.1:8080/h2 UserName:sa   Password:sa)
-![image](https://github.com/18721336535/demo/tempimage/h2console.png)
-![image](https://github.com/18721336535/demo/tempimage/h2data.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/h2console.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/h2data.png)
 ##### Swagger Config
 ```
    <dependency>
@@ -112,17 +112,17 @@ public class ResponseEntity<T> {
 ```
 use anotation on api
 http://127.0.0.1:8080/swagger-ui/index.html
-![image](https://github.com/18721336535/demo/tempimage/swgapis.png)
-![image](https://github.com/18721336535/demo/tempimage/api1.png)
-![image](https://github.com/18721336535/demo/tempimage/api2.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/swgapis.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/api1.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/api2.png)
 
 ##### Frontend  UI
 Web pages able user to input creterias to get data wanted.
 http://127.0.0.1:8080/toolkit.html
 default get all  items with no criteria
-![image](https://github.com/18721336535/demo/tempimage/ui1.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/ui1.png)
 with criteria: Noodles
-![image](https://github.com/18721336535/demo/tempimage/ui2.png)
+![image](https://github.com/18721336535/demo/blob/main/tempimage/ui2.png)
 ### Step3.  Deployment / Intergration Testing
 
 ##### Deployment Method
